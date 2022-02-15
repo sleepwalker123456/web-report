@@ -45,12 +45,11 @@ export default {
   position: absolute;
   width: 100%;
   height: 100%;
-  font-family: JetBrains Mono Medium;
   display: flex;
   align-items: center;
   justify-content: center;
   /*background-color: #0e92b3;*/
-  backgroundImage: url('../assets/img/login.jpg') no-repeat;
+  background-image: url('../assets/img/login.jpg');
   background-size: 100% 100%;
 }
 </style>
