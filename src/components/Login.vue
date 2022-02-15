@@ -13,7 +13,7 @@
         </div>
       </div>
       <div class="action">
-        <div class="btn">login</div>
+        <div class="btn" @click="handlerSubmit">LOGIN</div>
       </div>
     </div>
   </div>
@@ -32,7 +32,6 @@ export default {
   },
   methods: {
     handlerSubmit: function () {
-      console.info(this.$router)
       this.$router.push('/home')
     }
   }
