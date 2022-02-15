@@ -1,17 +1,20 @@
 <template>
-  <div>
-    <form>
-      <div>
-        <label>Username</label>
-        <input v-model="formLine.username" type="text" placeholder="Enter your name......">
+  <div class="login-body">
+    <div class="form-wrapper">
+      <div class="header">
+        login
       </div>
-      <div>
-        <label>Password</label>
-        <input v-model="formLine.password" type="password" placeholder="Enter your password......">
+      <div class="input-wrapper">
+        <div class="border-wrapper">
+          <input type="text" name="username" placeholder="username" class="border-item" autocomplete="off">
+        </div>
+        <div class="border-wrapper">
+          <input type="password" name="password" placeholder="password" class="border-item" autocomplete="off">
+        </div>
       </div>
-    </form>
-    <div>
-      <button @click="handlerSubmit">login</button>
+      <div class="action">
+        <div class="btn">login</div>
+      </div>
     </div>
   </div>
 </template>
@@ -37,5 +40,17 @@ export default {
 </script>
 
 <style scoped>
-
+@import "../style/css/login.css";
+.login-body {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-family: JetBrains Mono Medium;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*background-color: #0e92b3;*/
+  backgroundImage: url('../assets/img/login.jpg') no-repeat;
+  background-size: 100% 100%;
+}
 </style>

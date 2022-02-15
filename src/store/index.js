@@ -1,13 +1,14 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import {AUTO_INCREMENT, AUTO_DECREMENT} from './mutations-type'
+import {AUTO_INCREMENT, AUTO_DECREMENT, ADMIN_INFO} from './mutations-type'
 
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    counter: 1000
+    counter: 1000,
+    adminInfo: {}
   },
   mutations: {
     [AUTO_INCREMENT] (state) {
@@ -15,6 +16,9 @@ const store = new Vuex.Store({
     },
     [AUTO_DECREMENT] (state) {
       state.counter--
+    },
+    [ADMIN_INFO] (state, data) {
+      state.adminInfo = data
     }
   }
 })

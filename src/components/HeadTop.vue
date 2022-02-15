@@ -1,9 +1,9 @@
 <template>
   <div>
-    <ul >
-      <li >
-        <a href="javascript:;">用户名</a>
-        <dl >
+    <ul>
+      <li>
+        <a href="">用户名</a>
+        <dl>
           <dd>
             <a href="">基本资料</a>
           </dd>
@@ -12,14 +12,19 @@
           </dd>
         </dl>
       </li>
-      <li ><a>注销</a></li>
+      <li><a @click="logout">注销</a></li>
     </ul>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HeadTop'
+  name: 'HeadTop',
+  methods: {
+    logout: function () {
+      this.$router.push('/')
+    }
+  }
 }
 </script>
 
