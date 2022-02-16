@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import {getAdminInfo} from './common/getData'
+
 export default {
   name: 'Login',
   data: function () {
@@ -32,7 +34,14 @@ export default {
   },
   methods: {
     handlerSubmit: function () {
-      this.$router.push('/home')
+      const config = {
+        url: '/api/sayHello',
+        method: 'get'
+      }
+      getAdminInfo(config).then(res => {
+        console.info(res)
+        this.$router.push('/home')
+      })
     }
   }
 }
@@ -40,6 +49,7 @@ export default {
 
 <style scoped>
 @import "../style/css/login.css";
+
 .login-body {
   position: absolute;
   width: 100%;

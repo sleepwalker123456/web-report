@@ -1,30 +1,20 @@
 <template>
   <div>
-    <ul>
-      <li>
-        <a href="">用户名</a>
-        <dl>
-          <dd>
-            <a href="">基本资料</a>
-          </dd>
-          <dd>
-            <a href="">安全设置</a>
-          </dd>
-        </dl>
-      </li>
-      <li><a @click="logout">注销</a></li>
-    </ul>
+    <div class="head-left" style="float: left">
+      <slot name="head_left"></slot>
+    </div>
+    <div class="head-center" style="text-align: center">
+      <slot name="head_center"></slot>
+    </div>
+    <div class="head-right" style="float: right">
+      <slot name="head_right"></slot>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HeadTop',
-  methods: {
-    logout: function () {
-      this.$router.push('/')
-    }
-  }
+  name: 'HeadTop'
 }
 </script>
 
