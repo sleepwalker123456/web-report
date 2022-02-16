@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import {getAdminInfo} from './common/getData'
+import {getAdminInfo} from '../../../network/home'
 
 export default {
   name: 'Login',
@@ -40,15 +40,17 @@ export default {
       }
       getAdminInfo(config).then(res => {
         console.info(res)
-        this.$router.push('/home')
+      }).catch(err => {
+        console.info(err)
       })
+      this.$router.push('/home')
     }
   }
 }
 </script>
 
 <style scoped>
-@import "../style/css/login.css";
+@import "../../../style/css/login.css";
 
 .login-body {
   position: absolute;
@@ -58,7 +60,7 @@ export default {
   align-items: center;
   justify-content: center;
   /*background-color: #0e92b3;*/
-  background-image: url('../assets/img/login.jpg');
+  background-image: url('../../../assets/img/login.jpg');
   background-size: 100% 100%;
 }
 </style>
