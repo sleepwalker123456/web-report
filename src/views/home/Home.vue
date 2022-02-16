@@ -1,11 +1,11 @@
 <template>
   <div class="home-menu">
-    <ul>
-      <li><a class="active" href="#home">主页</a></li>
-      <li><a href="#news">新闻</a></li>
-      <li><a href="#contact">联系</a></li>
-      <li><a href="#about">关于</a></li>
-    </ul>
+    <div v-for="menu in menus" v-bind:key="menu.id">
+      <div class="Nav-Img">
+        <img v-bind:src="menu.link">
+        <div><a v-bind:href="menu.url">{{ menu.name }}</a></div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -28,31 +28,43 @@ export default {
 </script>
 
 <style scoped>
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+.Content-Home .ContentText .ContentNav .Nav-Img {
+  margin-top: 10px;
+  margin-left: 18px;
+  max-width: 295px;
+  max-height: 200px;
   width: 25%;
-  background-color: #f1f1f1;
-  position: fixed;
+  height: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.Content-Home .ContentText .ContentNav .Nav-Img .Image {
+  width: 100%;
   height: 100%;
-  overflow: auto;
+  transition: .8s;
 }
 
-li a {
-  display: block;
-  color: #000;
-  padding: 8px 16px;
-  text-decoration: none;
+.Content-Home .ContentText .ContentNav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 100%;
+  max-width: 1250px;
+  min-width: 300px;
+  float: left;
 }
 
-li a.active {
-  background-color: #4CAF50;
-  color: white;
+.Content-Home .ContentText {
+  width: 100%;
+  height: 410px;
+  padding-left: calc(50% - 610px);
+  padding-right: calc(50% - 610px);
+  overflow: hidden;
 }
 
-li a:hover:not(.active) {
-  background-color: #555;
-  color: white;
+.home-menu div{
+  display: inline-block;
 }
+
 </style>
