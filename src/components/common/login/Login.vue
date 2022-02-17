@@ -59,7 +59,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  /*background-color: #0e92b3;*/
   background-image: url('../../../assets/img/login.jpg');
   background-size: 100% 100%;
 }
