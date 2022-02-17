@@ -7,42 +7,38 @@
         </template>
         <template v-slot:center>
           <div><p>主页</p></div>
-            <div>说明</div>
-            <div>关于</div>
-            <div>我的</div>
+          <div><p>说明</p></div>
+          <div><p>我的</p></div>
         </template>
         <template v-slot:right>
           <div>
-            <div >注销</div>
+            <div>注销</div>
           </div>
         </template>
       </nav-bar>
     </div>
-    <div class="content-body" style="margin-left:25%;padding:1px 16px;height:1000px;">
-      <keep-alive>
-        <router-view></router-view>
-      </keep-alive>
-    </div>
+    <home></home>
   </div>
 </template>
 
 <script>
 import MainTabBar from '../components/tabbar/MainTabBar'
 import NavBar from '../components/common/navbar/NavBar'
+import Home from './home/Home'
+
 export default {
   name: 'HomePage',
   components: {
     MainTabBar,
-    NavBar
+    NavBar,
+    Home
   },
   data: function () {
-    return {
-    }
+    return {}
   }
 }
 </script>
 
 <style scoped>
-.content-body {
-}
+
 </style>

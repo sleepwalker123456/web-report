@@ -1,12 +1,51 @@
 <template>
-  <div class="home-menu">
-    <div v-for="menu in menus" v-bind:key="menu.id">
-      <div class="Nav-Img">
-        <img v-bind:src="menu.link">
-        <div><a v-bind:href="menu.url">{{ menu.name }}</a></div>
-      </div>
+  <div>
+    <Menu active-name="1-2" :open-names="['1']">
+      <Submenu name="1">
+        <template slot="title">
+          <Icon type="ios-analytics"/>
+          Navigation One
+        </template>
+        <MenuGroup title="Item 1">
+          <MenuItem name="1-1" to="/home/middle">中间表</MenuItem>
+          <MenuItem name="1-2">Option 2</MenuItem>
+        </MenuGroup>
+        <MenuGroup title="Item 2">
+          <MenuItem name="1-3">Option 3</MenuItem>
+          <MenuItem name="1-4">Option 4</MenuItem>
+        </MenuGroup>
+      </Submenu>
+      <Submenu name="2">
+        <template slot="title">
+          <Icon type="ios-filing"/>
+          Navigation Two
+        </template>
+        <MenuItem name="2-1">Option 5</MenuItem>
+        <MenuItem name="2-2">Option 6</MenuItem>
+        <Submenu name="3">
+          <template slot="title">Submenu</template>
+          <MenuItem name="3-1">Option 7</MenuItem>
+          <MenuItem name="3-2">Option 8</MenuItem>
+        </Submenu>
+      </Submenu>
+      <Submenu name="4">
+        <template slot="title">
+          <Icon type="ios-cog"/>
+          Navigation Three
+        </template>
+        <MenuItem name="4-1">Option 9</MenuItem>
+        <MenuItem name="4-2">Option 10</MenuItem>
+        <MenuItem name="4-3">Option 11</MenuItem>
+        <MenuItem name="4-4">Option 12</MenuItem>
+      </Submenu>
+    </Menu>
+    <div class="content-body">
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
     </div>
   </div>
+
 </template>
 
 <script>
@@ -15,12 +54,12 @@ export default {
   data: function () {
     return {
       menus: [
-        {id: 1, name: '数据查询', url: '', link: require('../../assets/img/menus/solutionbg3.jpg')},
+        {id: 1, name: '数据查询', url: '/home/middle', link: require('../../assets/img/menus/solutionbg3.jpg')},
         {id: 2, name: '数据导入', url: '', link: require('../../assets/img/menus/solutionbg6.jpg')},
         {id: 3, name: '系统配置', url: '', link: require('../../assets/img/menus/solutionbg5.jpg')},
         {id: 4, name: '辅助功能', url: '', link: require('../../assets/img/menus/solutionbg1.jpg')},
         {id: 5, name: '数据可视化', url: '', link: require('../../assets/img/menus/solutionbg2.jpg')},
-        {id: 6, name: '系统继承', url: '', link: require('../../assets/img/menus/solutionbg9.jpg')}
+        {id: 6, name: '系统集成', url: '', link: require('../../assets/img/menus/solutionbg9.jpg')}
       ]
     }
   }
@@ -28,43 +67,11 @@ export default {
 </script>
 
 <style scoped>
-.Content-Home .ContentText .ContentNav .Nav-Img {
-  margin-top: 10px;
-  margin-left: 18px;
-  max-width: 295px;
-  max-height: 200px;
-  width: 25%;
-  height: 50%;
-  overflow: hidden;
-  cursor: pointer;
+.content-body {
+  width: 70%;
+  float: right;
+  position:absolute;
+  top: 60px;
+  left: 20%;
 }
-
-.Content-Home .ContentText .ContentNav .Nav-Img .Image {
-  width: 100%;
-  height: 100%;
-  transition: .8s;
-}
-
-.Content-Home .ContentText .ContentNav {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  height: 100%;
-  max-width: 1250px;
-  min-width: 300px;
-  float: left;
-}
-
-.Content-Home .ContentText {
-  width: 100%;
-  height: 410px;
-  padding-left: calc(50% - 610px);
-  padding-right: calc(50% - 610px);
-  overflow: hidden;
-}
-
-.home-menu div{
-  display: inline-block;
-}
-
 </style>
