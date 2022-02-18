@@ -8,7 +8,9 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     counter: 1000,
-    adminInfo: {}
+    adminInfo: {
+      name: '系统管理员'
+    }
   },
   mutations: {
     [AUTO_INCREMENT] (state) {

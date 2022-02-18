@@ -8,11 +8,11 @@
         <template v-slot:center>
           <div><p>主页</p></div>
           <div><p>说明</p></div>
-          <div><p>我的</p></div>
+          <div><p>{{ $store.state.adminInfo.name }}</p></div>
         </template>
         <template v-slot:right>
           <div>
-            <div>注销</div>
+            <div @click="logout">注销</div>
           </div>
         </template>
       </nav-bar>
@@ -35,6 +35,11 @@ export default {
   },
   data: function () {
     return {}
+  },
+  methods: {
+    logout: function () {
+      this.$router.replace('/')
+    }
   }
 }
 </script>
