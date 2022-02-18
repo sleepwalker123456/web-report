@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Menu active-name="1-2" :open-names="['1']">
+    <Menu :open-names="['1']">
       <Submenu name="1">
         <template slot="title">
           <Icon type="ios-analytics"/>
@@ -8,11 +8,12 @@
         </template>
         <MenuGroup title="Item 1">
           <MenuItem name="1-1" to="/home/middle">中间表</MenuItem>
-          <MenuItem name="1-2">Option 2</MenuItem>
+          <MenuItem name="1-2" to="/home/profile">Option 2</MenuItem>
+          <MenuItem name="1-3" to="/home/category">Option 3</MenuItem>
         </MenuGroup>
         <MenuGroup title="Item 2">
-          <MenuItem name="1-3">Option 3</MenuItem>
           <MenuItem name="1-4">Option 4</MenuItem>
+          <MenuItem name="1-5">Option 5</MenuItem>
         </MenuGroup>
       </Submenu>
       <Submenu name="2">
@@ -50,28 +51,16 @@
 
 <script>
 export default {
-  name: 'Home',
-  data: function () {
-    return {
-      menus: [
-        {id: 1, name: '数据查询', url: '/home/middle', link: require('../../assets/img/menus/solutionbg3.jpg')},
-        {id: 2, name: '数据导入', url: '', link: require('../../assets/img/menus/solutionbg6.jpg')},
-        {id: 3, name: '系统配置', url: '', link: require('../../assets/img/menus/solutionbg5.jpg')},
-        {id: 4, name: '辅助功能', url: '', link: require('../../assets/img/menus/solutionbg1.jpg')},
-        {id: 5, name: '数据可视化', url: '', link: require('../../assets/img/menus/solutionbg2.jpg')},
-        {id: 6, name: '系统集成', url: '', link: require('../../assets/img/menus/solutionbg9.jpg')}
-      ]
-    }
-  }
+  name: 'Home'
 }
 </script>
 
 <style scoped>
 .content-body {
-  width: 70%;
+  width: 80%;
   float: right;
   position:absolute;
   top: 60px;
-  left: 20%;
+  left: 18%;
 }
 </style>

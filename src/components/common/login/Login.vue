@@ -40,10 +40,10 @@ export default {
       }
       getAdminInfo(config).then(res => {
         console.info(res)
+        this.$router.push('/home')
       }).catch(err => {
         console.info(err)
       })
-      this.$router.push('/home')
     }
   }
 }
@@ -52,14 +52,4 @@ export default {
 <style scoped>
 @import "../../../style/css/login.css";
 
-.login-body {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-image: url('../../../assets/img/login.jpg');
-  background-size: 100% 100%;
-}
 </style>

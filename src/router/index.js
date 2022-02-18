@@ -9,7 +9,6 @@ const Profile = () => import('views/profile/Profile')
 const Category = () => import('views/category/Category')
 const HomePage = () => import('views/HomePage')
 const Middle = () => import('views/middle/Middle')
-const TableData = () => import('components/common/table/tableData')
 
 Vue.use(Router)
 Vue.use(ViewUI)
@@ -28,23 +27,18 @@ const routes = [
         component: Middle
       },
       {
-        path: '/profile',
+        path: 'profile',
         component: Profile
       },
       {
-        path: '/category',
+        path: 'category',
         component: Category
       },
       {
-        path: '/cart',
+        path: 'cart',
         component: Cart
       }
-
     ]
-  },
-  {
-    path: '/query',
-    component: TableData
   }
 ]
 
