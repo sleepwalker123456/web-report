@@ -21,12 +21,10 @@
         </FormItem>
       </Form>
     </div>
-    <Table highlight-row stripe :columns="columns" :data="page.showData" @on-current-change="showDetails"></Table>
+    <Table highlight-row stripe :columns="columns" :data="page.showData" @on-row-dblclick="showDetails"></Table>
     <Page :total="page.dataCount" size="small" :page-size="page.pageSize" @on-change="changePage" show-total show-elevator/>
     <Modal v-model="modal1" title="Common Modal dialog box title">
-      <p>Content of dialog</p>
-      <p>Content of dialog</p>
-      <p>Content of dialog</p>
+
     </Modal>
   </div>
 </template>
@@ -49,7 +47,7 @@ export default {
         org: ''
       },
       columns: [
-        {title: '组织', key: 'comId'},
+        /*{title: '组织', key: 'comId'},
         {title: '单号', key: 'vouNo'},
         {title: '部门', key: 'deptName'},
         {title: '仓库编码', key: 'whId'},
@@ -59,19 +57,26 @@ export default {
         {title: '编制时间', key: 'stFillDate'},
         {title: '审核人', key: 'confirmUsrName'},
         {title: '审核时间', key: 'confirmFillDate'},
-        {title: '备注', key: 'notes'}
+        {title: '备注', key: 'notes'}*/
+        {title: 'id', key: 'id', sortable: true},
+        {title: 'idName', key: 'idName', sortable: true},
+        {title: 'name', key: 'name', sortable: true},
+        {title: 'organization', key: 'organization', sortable: true},
+        {title: 'people', key: 'people', sortable: true},
+        {title: 'state', key: 'state', sortable: true}
       ],
       options: [
         {code: 'outBound', name: '杂发单'},
         {code: 'miscRcvMaster', name: '杂收单'},
         {code: 'odoo', name: '成品入库'}
       ],
-      modal1: false
+      modal1: false,
+      details: ''
     }
   },
   methods: {
     queryData: function () {
-      this.$Loading.start()
+      /*this.$Loading.start()
       const config = {
         url: '/middle/api/selectNoExits',
         method: 'get',
@@ -84,24 +89,42 @@ export default {
         const result = res.data.entity
         this.page.data = result
         this.page.dataCount = result.length
-        this.page.showData = this.page.data.slice(0, this.pageSize)
+        this.page.showData = this.page.data.slice(0, this.page.pageSize)
         this.$Loading.finish()
       }).catch(err => {
         alert(err)
         this.$Loading.error()
-      })
+      })*/
+
+      for (let i = 0; i < 100; i++) {
+        let a = {
+          id: i,
+          idName: 'Mr.Li' + i,
+          name: '小李',
+          organization: '国务院',
+          people: '老李',
+          state: '活跃'
+        }
+        this.page.data.push(a)
+      }
+      this.page.dataCount = this.page.data.length
+      this.page.showData = this.page.data.slice(0, this.page.pageSize)
     },
     cancel: function () {
       this.formItem.select = ''
       this.formItem.org = ''
     },
     changePage: function (index) {
-      this.page.showData = changePage(index, this.data)
+      /*const _start = (index - 1) * this.page.pageSize
+      const _end = index * this.page.pageSize
+      this.page.showData = this.page.data.slice(_start, _end)*/
+      this.page.showData = changePage(index, this.page)
       this.page.pageCurrent = index
     },
     showDetails: function (currentRow, oldCurrentRow) {
       console.info(currentRow)
       this.modal1 = true
+      this.details = currentRow
     }
   }
 }

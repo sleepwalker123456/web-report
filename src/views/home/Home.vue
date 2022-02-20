@@ -61,6 +61,6 @@ export default {
   float: right;
   position:absolute;
   top: 60px;
-  left: 18%;
+  left: 16%;
 }
 </style>
