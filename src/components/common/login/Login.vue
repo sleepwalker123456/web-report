@@ -6,10 +6,12 @@
       </div>
       <div class="input-wrapper">
         <div class="border-wrapper">
-          <input type="text" name="username" placeholder="username" class="border-item" autocomplete="off">
+          <input type="text" v-model="formLine.username" name="username" placeholder="username" class="border-item"
+                 autocomplete="off">
         </div>
         <div class="border-wrapper">
-          <input type="password" name="password" placeholder="password" class="border-item" autocomplete="off">
+          <input type="password" v-model="formLine.password" name="password" placeholder="password" class="border-item"
+                 autocomplete="off">
         </div>
       </div>
       <div class="action">
@@ -21,6 +23,7 @@
 
 <script>
 import {getAdminInfo} from '../../../network/home'
+import {ADMIN_INFO} from "../../../store/mutations-type";
 
 export default {
   name: 'Login',
@@ -35,14 +38,25 @@ export default {
   methods: {
     handlerSubmit: function () {
       const config = {
-        url: '/api/sayHello',
-        method: 'get'
+        url: '/login',
+        method: 'post',
+        params: {
+          username: this.formLine.username,
+          password: this.formLine.password,
+          comId: 'SH01'
+        }
       }
       getAdminInfo(config).then(res => {
         console.info(res)
-        this.$router.push('/home')
+        if (res.statusCode === 200) {
+          this.$store.commit(ADMIN_INFO, res.entity)
+          this.$router.push('/home')
+        } else {
+          alert(res.message)
+        }
       }).catch(err => {
         console.info(err)
+        alert(err)
       })
     }
   }

@@ -3,14 +3,13 @@
     <div>
       <nav-bar>
         <template v-slot:left>
-          <div>DataReport</div>
+          <div><p>DataReport</p></div>
+          <div><p>主页</p></div>
         </template>
         <template v-slot:center>
-          <div><p>主页</p></div>
-          <div><p>说明</p></div>
-          <div><p>{{ $store.state.adminInfo.name }}</p></div>
         </template>
         <template v-slot:right>
+          <div><p>{{ $store.state.adminInfo.name }}</p></div>
           <div>
             <div @click="logout">注销</div>
           </div>
@@ -25,6 +24,8 @@
 import MainTabBar from '../components/tabbar/MainTabBar'
 import NavBar from '../components/common/navbar/NavBar'
 import Home from './home/Home'
+import {fetch} from '../network/request'
+import {ADMIN_INFO_CLEAR} from '../store/mutations-type'
 
 export default {
   name: 'HomePage',
@@ -38,7 +39,20 @@ export default {
   },
   methods: {
     logout: function () {
-      this.$router.replace('/')
+      const config = {
+        url: '/logout',
+        method: 'POST',
+        headers: {
+          'auth_token': this.$store.state.adminInfo.token
+        }
+      }
+      fetch(config).then(res => {
+        this.$store.commit(ADMIN_INFO_CLEAR, res)
+        alert(res.message)
+        this.$router.replace('/')
+      }).catch(err => {
+        alert(err)
+      })
     }
   }
 }

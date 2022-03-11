@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import ViewUI from 'view-design'
 import 'view-design/dist/styles/iview.css'
+import store from '../store'
 
 const Login = () => import('components/common/login/Login')
 const Cart = () => import('views/cart/Cart')
@@ -16,27 +17,41 @@ Vue.use(ViewUI)
 const routes = [
   {
     path: '',
+    redirect: '/login'
+  },
+  {
+    path: '/login',
+    name: 'Login',
     component: Login
   },
   {
     path: '/home',
     component: HomePage,
+    name: 'Home',
     children: [
       {
         path: 'middle',
-        component: Middle
+        name: 'Middle',
+        component: Middle,
+        meta: {requiresAuth: true}
       },
       {
         path: 'profile',
-        component: Profile
+        name: 'Profile',
+        component: Profile,
+        meta: {requiresAuth: true}
       },
       {
         path: 'category',
-        component: Category
+        name: 'Category',
+        component: Category,
+        meta: {requiresAuth: true}
       },
       {
         path: 'cart',
-        component: Cart
+        name: 'Cart',
+        component: Cart,
+        meta: {requiresAuth: true}
       }
     ]
   }
@@ -49,11 +64,20 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
   ViewUI.LoadingBar.start()
-  next()
+  console.info(to.name)
+  if (to.name !== 'Login' && !isAuthenticated()) {
+    next({path: '/login'})
+  } else {
+    next()
+  }
 })
 
-router.afterEach(route => {
+router.afterEach(to => {
   ViewUI.LoadingBar.finish()
 })
+
+function isAuthenticated() {
+  return store.state.adminInfo.token !== ''
+}
 
 export default router

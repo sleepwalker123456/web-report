@@ -6,15 +6,11 @@
           <Icon type="ios-analytics"/>
           Navigation One
         </template>
-        <MenuGroup title="Item 1">
-          <MenuItem name="1-1" to="/home/middle">中间表</MenuItem>
-          <MenuItem name="1-2" to="/home/profile">Option 2</MenuItem>
-          <MenuItem name="1-3" to="/home/category">Option 3</MenuItem>
-        </MenuGroup>
-        <MenuGroup title="Item 2">
-          <MenuItem name="1-4">Option 4</MenuItem>
-          <MenuItem name="1-5">Option 5</MenuItem>
-        </MenuGroup>
+        <MenuItem name="1-1" to="/home/middle">中间表</MenuItem>
+        <MenuItem name="1-2" to="/home/profile">出库单</MenuItem>
+        <MenuItem name="1-3" to="/home/category">入库单</MenuItem>
+        <MenuItem name="1-4" to="">返工条码</MenuItem>
+        <MenuItem name="1-5">BOM导出</MenuItem>
       </Submenu>
       <Submenu name="2">
         <template slot="title">
@@ -59,8 +55,9 @@ export default {
 .content-body {
   width: 80%;
   float: right;
-  position:absolute;
+  position: absolute;
   top: 60px;
   left: 16%;
+  margin-left: 2%;
 }
 </style>

@@ -7,6 +7,7 @@ import Axios from 'axios'
 Vue.config.productionTip = false
 Vue.prototype.$axios = Axios
 /* eslint-disable no-new */
+
 new Vue({
   el: '#app',
   store,
