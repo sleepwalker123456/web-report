@@ -1,9 +1,9 @@
 <template>
   <div>
     <Form inline>
-      <FormItem label="返工单号">
+      <FormItem label="返工单号" style="width: 300px">
         <Row>
-          <Col span="100%">
+          <Col span="100%" style="width: 100%">
             <Input v-model="reprocessingNo" placeholder="Enter something..."></Input>
           </Col>
         </Row>
@@ -17,22 +17,21 @@
 </template>
 
 <script>
+import {fetch} from '../../../network/request'
+
 export default {
-  name: 'Category',
+  name: 'Rework',
   data: function () {
     return {
       columns: [
         {title: '组织', key: 'comId'},
-        {title: '单号', key: 'vouNo', width: '150px'},
-        {title: '部门', key: 'deptName', width: ''},
-        {title: '仓库编码', key: 'whId', width: ''},
-        {title: '仓库名称', key: 'whName', width: ''},
-        {title: '单据类型', key: 'stockReasName', width: ''},
-        {title: '编制人', key: 'stUsrName', width: ''},
-        {title: '编制时间', key: 'stFillDate', width: ''},
-        {title: '审核人', key: 'confirmUsrName', width: ''},
-        {title: '审核时间', key: 'confirmFillDate', width: ''},
-        {title: '备注', key: 'notes', width: ''}
+        {title: '条码', key: 'barNo', width: '150px'},
+        {title: '料品编号', key: 'itemNo', width: ''},
+        {title: '料品名称', key: 'itemName', width: ''},
+        {title: '批次', key: 'lotNo', width: ''},
+        {title: '数量', key: 'orderQty', width: ''},
+        {title: '仓库', key: 'whId', width: ''},
+        {title: '出库单号', key: 'ckVouNo', width: ''}
       ],
       showData: [],
       reprocessingNo: ''
@@ -41,11 +40,17 @@ export default {
   methods: {
     queryData: function () {
       const config = {
+        url: '/getReprocessingBar',
         params: {
-          method: 'POST',
           reprocessingNo: this.reprocessingNo
         }
       }
+      fetch(config).then(response => {
+        console.info(response)
+        this.showData = response.entity
+      }).catch(error => {
+        alert(error)
+      })
       console.info('查询返工条码')
     }
   }

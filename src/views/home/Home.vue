@@ -7,17 +7,19 @@
           Navigation One
         </template>
         <MenuItem name="1-1" to="/home/middle">中间表</MenuItem>
-        <MenuItem name="1-2" to="/home/profile">出库单</MenuItem>
-        <MenuItem name="1-3" to="/home/category">入库单</MenuItem>
-        <MenuItem name="1-4" to="">返工条码</MenuItem>
+        <MenuItem name="1-2" to="/home/out">出库单</MenuItem>
+        <MenuItem name="1-3" to="/home/storage">入库单</MenuItem>
+        <MenuItem name="1-4" to="/home/rework">返工条码</MenuItem>
         <MenuItem name="1-5">BOM导出</MenuItem>
+        <MenuItem name="1-6" to="/home/rotation">转序领用入库</MenuItem>
+        <MenuItem name="1-7" to="/home/transfer">一步式调拨单</MenuItem>
       </Submenu>
       <Submenu name="2">
         <template slot="title">
           <Icon type="ios-filing"/>
           Navigation Two
         </template>
-        <MenuItem name="2-1">Option 5</MenuItem>
+        <MenuItem name="2-1" to="/home/transfer">一步式调拨单</MenuItem>
         <MenuItem name="2-2">Option 6</MenuItem>
         <Submenu name="3">
           <template slot="title">Submenu</template>

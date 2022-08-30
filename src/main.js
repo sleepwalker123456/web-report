@@ -8,6 +8,10 @@ Vue.config.productionTip = false
 Vue.prototype.$axios = Axios
 /* eslint-disable no-new */
 
+Vue.prototype.Trim = function (str) {
+  return str.replace(/(^\s*)|(\s*$)/g, '')
+}
+
 new Vue({
   el: '#app',
   store,

@@ -22,11 +22,8 @@
 </template>
 
 <script>
-import {getAdminInfo} from '../../../network/home'
-import {ADMIN_INFO} from '../../../store/mutations-type'
-
 export default {
-  name: 'Login',
+  name: 'LoginPage',
   data: function () {
     return {
       formLine: {
@@ -37,28 +34,7 @@ export default {
   },
   methods: {
     handlerSubmit: function () {
-      const config = {
-        url: '/login',
-        data: {
-          username: this.formLine.username,
-          password: this.formLine.password,
-          comId: 'SH01'
-        }
-      }
-      // this.$store.dispatch('adminLogin', config)
-      getAdminInfo(config).then(res => {
-        console.info(res)
-        if (res.statusCode === 200) {
-          this.$store.commit(ADMIN_INFO, res.entity)
-          sessionStorage.setItem('Authentication', res.entity.token)
-          this.$router.push('/home')
-        } else {
-          alert(res.message)
-        }
-      }).catch(err => {
-        console.info(err)
-        alert(err)
-      })
+      console.info('abc')
     }
   }
 }
@@ -66,5 +42,4 @@ export default {
 
 <style scoped>
 @import "../../../style/css/login.css";
-
 </style>

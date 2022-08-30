@@ -21,11 +21,11 @@
 </template>
 
 <script>
-import MainTabBar from '../components/tabbar/MainTabBar'
-import NavBar from '../components/common/navbar/NavBar'
-import Home from './home/Home'
-import {fetch} from '../network/request'
-import {ADMIN_INFO_CLEAR} from '../store/mutations-type'
+import MainTabBar from '../../components/tabbar/MainTabBar'
+import NavBar from '../../components/common/navbar/NavBar'
+import Home from './Home'
+import {fetch} from '../../network/request'
+import {ADMIN_INFO_CLEAR} from '../../store/mutations-type'
 
 export default {
   name: 'HomePage',
@@ -41,10 +41,7 @@ export default {
     logout: function () {
       const config = {
         url: '/logout',
-        method: 'POST',
-        headers: {
-          'auth_token': this.$store.state.adminInfo.token
-        }
+        method: 'POST'
       }
       fetch(config).then(res => {
         this.$store.commit(ADMIN_INFO_CLEAR, res)
